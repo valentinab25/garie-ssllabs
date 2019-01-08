@@ -2,8 +2,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const child_process = require('child_process');
 const { getSSLLabsFile, filterSSLLabsData, getData } = require('./');
-const ssllabsTestData = require('../../test/mock-data/ssllabs.json');
-const ssllabsTestDataFlat = require('../../test/mock-data/ssllabs-flat.json');
+const ssllabsTestData = require('../../test/mock-data/result.html');
 
 jest.mock('child_process', () => {
     return {
@@ -32,11 +31,11 @@ describe('ssllabs', () => {
         fs.removeSync(path.join(__dirname, '../../../reports/ssllabs-results/www.test.co.uk'));
     });
 
-    describe('getSSLLabsFile', () => {
+    describe('getSSLLabsResult', () => {
 
         it('finds and resolves the ssllabs results for the given url', async () => {
 
-            const result = await getSSLLabsFile('www.test.co.uk');
+            const result = await getSSLLabsResult('www.test.co.uk');
 
             expect(result).toEqual(ssllabsTestData);
 
@@ -45,30 +44,6 @@ describe('ssllabs', () => {
         it('rejects when no file can be found', async () => {
             fs.removeSync(path.join(__dirname, '../../reports/ssllabs-results/www.test.co.uk'));
             await expect(getSSLLabsFile('www.test.co.uk')).rejects.toEqual('Failed to get ssllabs file for www.test.co.uk');
-        });
-
-    });
-
-    describe('filterSSLLabsData', () => {
-
-        it('returns the `statistics` from the browser time file and flattens the data', () => {
-
-            const testData = {
-                statistics: {
-                    property1: {
-                        property1A: 'property1AValue'
-                    },
-                    property2: 'property2Value'
-                }
-            }
-
-            const data = filterSSLLabsData(testData);
-
-            expect(data['property1.property1A']).toEqual('property1AValue');
-            expect(data.property2).toEqual('property2Value');
-
-
-
         });
 
     });
