@@ -2,11 +2,7 @@
 
 <p align="center">
   <p align="center">Tool to gather ssslabs metrics and supports CRON jobs and webhooks.<p>
-  <p align="center"><a href="https://travis-ci.org/boyney123/garie-ssslabs"><img src="https://img.shields.io/travis/boyney123/garie-ssslabs/master.svg" alt="Build Status"></a>
-    <a href="https://codecov.io/gh/boyney123/garie-ssslabs/"><img src="https://codecov.io/gh/boyney123/garie-ssslabs/branch/master/graph/badge.svg?token=AoXW3EFgMP" alt="Codecov"></a>
-	<a href="https://github.com/boyney123/garie"><img src="https://img.shields.io/badge/plugin%20built%20for-garie-blue.svg" alt="garie"></a>  
     <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT"></a>
-
   </p>
 </p>
 
@@ -43,7 +39,7 @@ You can get setup with the basics in a few minutes.
 First clone the repo.
 
 ```sh
-git clone git@github.com:boyney123/garie-ssslabs.git
+git clone git@github.com:eea/garie-ssslabs.git
 ```
 
 Next setup you're config. Edit the `config.json` and add websites to the list.
