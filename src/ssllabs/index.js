@@ -50,7 +50,9 @@ const getSSLLabsResult = (url = '') => {
 	var result = {};
 	    
         const key = 'ssl_score';
-	    
+	
+	console.log("Received score "+grade[1]+" for "+url);
+
 	switch(grade[1]){
 		case 'A+':
 	           result[key] = 100;
